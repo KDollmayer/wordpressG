@@ -32,7 +32,7 @@ const Navbar = () => {
     fetch("http://localhost/wp-json/wp/v2/pages")
       .then((res) => res.json())
       .then((data) => setPathList(data));
-  }, [pathList]);
+  }, []);
 
   return (
     <Container>

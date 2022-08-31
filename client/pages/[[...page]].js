@@ -15,7 +15,15 @@ export default function Page({ data }) {
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
-        {data?.slug === "home" && <BlogFeed />}
+        {data?.acf?.contain_blog_feed && (
+          <BlogFeed
+            limit={
+              typeof data?.acf?.total_blog_feed_posts === "number"
+                ? data?.acf?.total_blog_feed_posts
+                : 100
+            }
+          />
+        )}
       </main>
     </div>
   );
