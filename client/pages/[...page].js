@@ -12,7 +12,7 @@ export default function Page({ data }) {
       </Head>
       <Navbar></Navbar>
       <main>
-        <h1>{data.title.rendered}</h1>
+        <h1>{data?.title?.rendered}</h1>
       </main>
     </div>
   );
@@ -31,8 +31,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const id = params.page[0];
-  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${id}`);
+  // Ber om ursäkt this looks like shit... but it works
+  const slug = params.page[0];
+  const pageRes = await fetch("http://localhost/wp-json/wp/v2/pages");
+  const pageData = await pageRes.json();
+  const page = pageData.find((page) => page.slug === slug);
+  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${page?.id}`);
   const data = await res.json();
   return {
     props: {

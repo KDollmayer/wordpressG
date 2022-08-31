@@ -3,7 +3,6 @@ import styles from "../../styles/Home.module.css";
 import Navbar from "../../components/Navbar";
 
 export default function Post({ data }) {
-  console.log("DATA", data);
   return (
     <div className={styles.container}>
       <Head>
@@ -36,8 +35,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const id = params.post[0];
-  const res = await fetch(`http://localhost/wp-json/wp/v2/posts/${id}`);
+  // Ber om ursäkt this looks like shit... but it works
+  const slug = params.post[0];
+
+  const pageRes = await fetch("http://localhost/wp-json/wp/v2/posts");
+  const pageData = await pageRes.json();
+  const page = pageData.find((page) => page.slug === slug);
+  const res = await fetch(`http://localhost/wp-json/wp/v2/posts/${page?.id}`);
   const data = await res.json();
   return {
     props: {

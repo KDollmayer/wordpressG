@@ -12,16 +12,23 @@ const Navbar = () => {
 
   return (
     <div>
-      {pathList &&
-        pathList.map((path) => {
+      <ul>
+        
+      {pathList && <>
+      <li>
+        <Link href="/">
+                <a>Home</a>
+              </Link>
+        </li>
+        {pathList.map((path) => {
           return (
             <li key={path.id}>
-              <Link href={`/${path.id}`}>
+              <Link href={`/${path.title.rendered.toLowerCase()}`}>
                 <a>{path.title.rendered}</a>
               </Link>
             </li>
           );
-        })}
+        })}</>}</ul>
     </div>
   );
 };
