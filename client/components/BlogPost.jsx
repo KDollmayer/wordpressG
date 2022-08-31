@@ -5,7 +5,7 @@ const BlogPost = ({ data }) => {
   console.log("POST", data);
   return (
     <li>
-      <Link href={`/${data.id}`}>
+      <Link href={`/posts/${data.id}`}>
         <a>
           <h2>{data.title.rendered}</h2>
           <p dangerouslySetInnerHTML={{ __html: data.excerpt.rendered }}></p>
