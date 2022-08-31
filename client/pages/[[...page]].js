@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
+import BlogFeed from "../components/BlogFeed";
 
 export default function Page({ data }) {
   return (
@@ -14,6 +15,7 @@ export default function Page({ data }) {
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
+        {data?.slug === "home" && <BlogFeed />}
       </main>
     </div>
   );
