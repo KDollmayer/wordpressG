@@ -32,12 +32,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   // Ber om ursäkt this looks like shit... but it works
-  const slug = params.page[0];
+  const slug = params.page?.[0];
   const pageRes = await fetch("http://localhost/wp-json/wp/v2/pages");
   const pageData = await pageRes.json();
-  const page = pageData.find((page) => page.slug === slug);
+
+  const page = pageData.find(
+    (page) =>
+      page.slug === slug ||
+      ("undefined" === typeof slug && page.slug === "home")
+  );
+
   const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${page?.id}`);
   const data = await res.json();
+
   return {
     props: {
       data,

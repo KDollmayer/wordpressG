@@ -1,8 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import styled from 'styled-components'
+
+const Container = styled.nav`
+position: relative;
+height: 100px;
+width: 100%;
+background-color: black;
+color: white;
+`
+
+const NavList = styled.ul`
+height: fit-content;
+position: absolute;
+top: 50%;
+left: 0;
+transform: translateY(-50%);
+display: flex;
+flex-direction: row;
+list-style: none;
+margin: 0;
+li {
+  margin-right: 30px;
+}
+`
 
 const Navbar = () => {
-  const [pathList, setPathList] = useState([]);
+  const [pathList, setPathList] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost/wp-json/wp/v2/pages")
@@ -11,15 +35,10 @@ const Navbar = () => {
   }, [pathList]);
 
   return (
-    <div>
-      <ul>
+    <Container>
+      <NavList>
         
       {pathList && <>
-      <li>
-        <Link href="/">
-                <a>Home</a>
-              </Link>
-        </li>
         {pathList.map((path) => {
           return (
             <li key={path.id}>
@@ -28,8 +47,8 @@ const Navbar = () => {
               </Link>
             </li>
           );
-        })}</>}</ul>
-    </div>
+        })}</>}</NavList>
+    </Container>
   );
 };
 
