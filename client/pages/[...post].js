@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
 export default function Post({ data }) {
+  console.log("DATA", data);
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +12,11 @@ export default function Post({ data }) {
       </Head>
       <nav></nav>
       <main>
-        <div dangerouslySetInnerHTML={{ __html: data.content.rendered }}></div>
+        {data && (
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}
+          ></div>
+        )}
       </main>
     </div>
   );
