@@ -2,12 +2,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import BlogFeed from "../components/BlogFeed";
-<<<<<<< HEAD
 
 import Layout from "../components/Layout/Layout";
-=======
 import GalleryGrid from "../components/GalleryGrid";
->>>>>>> 58b45eaf7c337ed30cab02bffedafc698764fc50
 
 export default function Page({ data }) {
   const getProperties = (data) => {
@@ -31,9 +28,9 @@ export default function Page({ data }) {
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
-<<<<<<< HEAD
+
         {data?.slug === "home" && <BlogFeed />}
-=======
+
         {data?.acf?.contain_blog_feed && (
           <BlogFeed
             limit={
@@ -46,7 +43,6 @@ export default function Page({ data }) {
         {data?.acf?.contain_gallery_grid && (
           <GalleryGrid data={getProperties(data?.acf)} />
         )}
->>>>>>> 58b45eaf7c337ed30cab02bffedafc698764fc50
       </main>
     </div>
   );
