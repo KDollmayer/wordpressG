@@ -1,11 +1,16 @@
 import React from "react";
+import Link from "next/link";
 
 const BlogPost = ({ data }) => {
-    console.log("POST",data)
+  console.log("POST", data);
   return (
     <li>
-      <h2>{data.title.rendered}</h2>
-      <div dangerouslySetInnerHTML={{__html:data.content.rendered}}></div>
+      <Link href={`/${data.id}`}>
+        <a>
+          <h2>{data.title.rendered}</h2>
+          <p dangerouslySetInnerHTML={{ __html: data.excerpt.rendered }}></p>
+        </a>
+      </Link>
     </li>
   );
 };
