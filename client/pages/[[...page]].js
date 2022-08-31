@@ -2,8 +2,18 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import BlogFeed from "../components/BlogFeed";
+import GalleryGrid from "../components/GalleryGrid";
 
 export default function Page({ data }) {
+  const getProperties = (data) => {
+    let propertyList = [];
+    for (var property in data) {
+      if (/^gallery_image\d+$/.test(property)) {
+        propertyList.push(data[property]);
+      }
+    }
+    return propertyList;
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -23,6 +33,9 @@ export default function Page({ data }) {
                 : 100
             }
           />
+        )}
+        {data?.acf?.contain_gallery_grid && (
+          <GalleryGrid data={getProperties(data?.acf)} />
         )}
       </main>
     </div>
