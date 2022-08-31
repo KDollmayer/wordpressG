@@ -9,6 +9,11 @@ const Container = styled.div`
   background-color: black;
 `;
 
+const MainContainer = styled.div`
+  background-color: white;
+  color: black;
+`;
+
 export default function Layout({ children }) {
   return (
     <>
@@ -16,7 +21,9 @@ export default function Layout({ children }) {
       <Container>
         <Navbar />
         <Header />
-        <main>{children}</main>
+        <MainContainer>
+          <main>{children}</main>
+        </MainContainer>
         <Footer />
       </Container>
     </>
