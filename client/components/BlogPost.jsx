@@ -17,12 +17,12 @@ const Thumbnail = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
-  background-image: url(${(props) =>
+  background-image: ${(props) =>
     props.bg
       ? css`
-          ${props.bg}
+          url(${props.bg})
         `
-      : "http://localhost/wp-content/uploads/2022/08/manja-vitolic-gKXKBY-C-Dk-unsplash-1.jpg"});
+      : "url(http://localhost/wp-content/uploads/2022/08/manja-vitolic-gKXKBY-C-Dk-unsplash-1.jpg)"};
   background-size: cover;
   background-position: center;
 `;
@@ -55,6 +55,19 @@ const MoreButton = styled.button`
 `;
 
 const BlogPost = ({ data }) => {
+  const [thumbnail, setThumbnail] = useState(null);
+
+  const renderMedia = async (media) => {
+    const res = await fetch(`http://localhost/wp-json/wp/v2/media/${media}`);
+    const data = await res.json();
+    setThumbnail(data?.source_url);
+  };
+
+  useEffect(() => {
+    if (data?.featured_media > 0) {
+      renderMedia(data?.featured_media);
+    }
+  }, []);
   return (
     <Container>
       <Thumbnail bg={thumbnail} />

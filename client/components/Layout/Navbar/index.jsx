@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.nav`
   position: relative;
-  height: 100px;
+  height: 10vh;
   width: 100%;
   background-color: black;
   color: white;
@@ -14,7 +14,7 @@ const NavList = styled.ul`
   height: fit-content;
   position: absolute;
   top: 50%;
-  left: 0;
+  right: 0;
   transform: translateY(-50%);
   display: flex;
   flex-direction: row;
@@ -22,6 +22,10 @@ const NavList = styled.ul`
   margin: 0;
   li {
     margin-right: 30px;
+
+    &:hover {
+      text-decoration: solid underline white 2px;
+    }
   }
 `;
 
