@@ -15,7 +15,7 @@ const Navbar = () => {
       {pathList &&
         pathList.map((path) => {
           return (
-            <li>
+            <li key={path.id}>
               <Link href={`/${path.id}`}>
                 <a>{path.title.rendered}</a>
               </Link>
