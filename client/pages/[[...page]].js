@@ -2,10 +2,23 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
 import BlogFeed from "../components/BlogFeed";
+<<<<<<< HEAD
 
 import Layout from "../components/Layout/Layout";
+=======
+import GalleryGrid from "../components/GalleryGrid";
+>>>>>>> 58b45eaf7c337ed30cab02bffedafc698764fc50
 
 export default function Page({ data }) {
+  const getProperties = (data) => {
+    let propertyList = [];
+    for (var property in data) {
+      if (/^gallery_image\d+$/.test(property)) {
+        propertyList.push(data[property]);
+      }
+    }
+    return propertyList;
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +31,22 @@ export default function Page({ data }) {
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
+<<<<<<< HEAD
         {data?.slug === "home" && <BlogFeed />}
+=======
+        {data?.acf?.contain_blog_feed && (
+          <BlogFeed
+            limit={
+              typeof data?.acf?.total_blog_feed_posts === "number"
+                ? data?.acf?.total_blog_feed_posts
+                : 100
+            }
+          />
+        )}
+        {data?.acf?.contain_gallery_grid && (
+          <GalleryGrid data={getProperties(data?.acf)} />
+        )}
+>>>>>>> 58b45eaf7c337ed30cab02bffedafc698764fc50
       </main>
     </div>
   );
