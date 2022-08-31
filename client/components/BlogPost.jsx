@@ -9,8 +9,9 @@ const Container = styled.li`
   height: 450px;
   margin: 20px;
   box-shadow: 0px 5px 10px lightgrey;
-  border-radius: 5px;
   overflow: hidden;
+  position: relative;
+
 `;
 
 const Thumbnail = styled.div`
@@ -23,7 +24,6 @@ const Thumbnail = styled.div`
 `;
 
 const TextContainer = styled.div`
-  position: relative;
   padding: 5px 10px;
   height: 67%;
 `;
@@ -37,6 +37,18 @@ const ShadowBox = styled.div`
   height: 250px;
   z-index: 1;
 `;
+
+const MoreButton = styled.button`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 2;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+`
 
 const BlogPost = ({ data }) => {
   const [thumbnail, setThumbnail] = useState(null)
@@ -52,16 +64,17 @@ const renderMedia = async (media) => {
   },[])
   return (
     <Container>
-      <Link href={`/posts/${data.slug}`}>
-        <a>
+      
           <Thumbnail bg={thumbnail}/>
           <TextContainer>
             <h2>{data.title.rendered}</h2>
             <p dangerouslySetInnerHTML={{ __html: data.excerpt.rendered }}></p>
             <ShadowBox/>
-          </TextContainer>
-        </a>
+            <Link href={`/posts/${data.slug}`}>
+        <a><MoreButton>Read Post</MoreButton></a>
       </Link>
+          </TextContainer>
+        
     </Container>
   );
 };
