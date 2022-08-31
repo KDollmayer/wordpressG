@@ -13,6 +13,7 @@ export default function Page({ data }) {
       <Navbar></Navbar>
       <main>
         <h1>{data?.title?.rendered}</h1>
+        <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
       </main>
     </div>
   );
