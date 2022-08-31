@@ -59,6 +59,7 @@ const renderMedia = async (media) => {
  const data = await res.json()
  setThumbnail(data?.source_url)
 }
+
   useEffect(() => {
     if (data?.featured_media > 0){renderMedia(data?.featured_media)}
   },[])

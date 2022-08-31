@@ -5,6 +5,8 @@ const Container = styled.div`
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
+width: 80%;
+margin: auto;
 `
 
 const Item = styled.img`
