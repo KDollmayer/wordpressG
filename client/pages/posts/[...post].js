@@ -1,8 +1,18 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Navbar from "../../components/Navbar";
+import GalleryGrid from "../../components/GalleryGrid";
 
 export default function Post({ data }) {
+  const getProperties = (data) => {
+    let propertyList = [];
+    for (var property in data) {
+      if (/^gallery_image\d+$/.test(property)) {
+        propertyList.push(data[property]);
+      }
+    }
+    return propertyList;
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -16,6 +26,18 @@ export default function Post({ data }) {
           <div
             dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}
           ></div>
+        )}
+        {data?.acf?.contain_blog_feed && (
+          <BlogFeed
+            limit={
+              typeof data?.acf?.total_blog_feed_posts === "number"
+                ? data?.acf?.total_blog_feed_posts
+                : 100
+            }
+          />
+        )}
+        {data?.acf?.contain_gallery_grid && (
+          <GalleryGrid data={getProperties(data?.acf)} />
         )}
       </main>
     </div>
