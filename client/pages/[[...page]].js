@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
-import BlogFeed from "../components/BlogFeed";
-import GalleryGrid from "../components/GalleryGrid";
+import BlogFeed from "../components/Organism/BlogFeed";
+import GalleryGrid from "../components/Organism/GalleryGrid";
 
 export default function Page({ data }) {
   const getProperties = (data) => {

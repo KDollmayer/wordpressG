@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import Navbar from "../../components/Navbar";
-import GalleryGrid from "../../components/GalleryGrid";
+import Navbar from "../../components/Layout/Navbar";
+import GalleryGrid from "../../components/Organism/GalleryGrid";
 import BlogPage from "../../components/BlogPage";
 
 export default function Post({ data }) {
