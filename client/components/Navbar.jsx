@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Container = styled.nav`
-position: relative;
-height: 100px;
-width: 100%;
-background-color: black;
-color: white;
-`
+  position: relative;
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  color: white;
+`;
 
 const NavList = styled.ul`
-height: fit-content;
-position: absolute;
-top: 50%;
-left: 0;
-transform: translateY(-50%);
-display: flex;
-flex-direction: row;
-list-style: none;
-margin: 0;
-li {
-  margin-right: 30px;
-}
-`
+  height: fit-content;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  li {
+    margin-right: 30px;
+  }
+`;
 
 const Navbar = () => {
   const [pathList, setPathList] = useState(null);
@@ -32,22 +32,25 @@ const Navbar = () => {
     fetch("http://localhost/wp-json/wp/v2/pages")
       .then((res) => res.json())
       .then((data) => setPathList(data));
-  }, [pathList]);
+  }, []);
 
   return (
     <Container>
       <NavList>
-        
-      {pathList && <>
-        {pathList.map((path) => {
-          return (
-            <li key={path.id}>
-              <Link href={`/${path.title.rendered.toLowerCase()}`}>
-                <a>{path.title.rendered}</a>
-              </Link>
-            </li>
-          );
-        })}</>}</NavList>
+        {pathList && (
+          <>
+            {pathList.map((path) => {
+              return (
+                <li key={path.id}>
+                  <Link href={`/${path.title.rendered.toLowerCase()}`}>
+                    <a>{path.title.rendered}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </>
+        )}
+      </NavList>
     </Container>
   );
 };
