@@ -21,6 +21,8 @@ This application contains an optional catch all route [[...page]].js so this fil
 There is also a catch all route for [...post].js, they can be viewed at `/posts/${post slug}`.
 
 ## Requirements
-For the application to run properly you will need the plugin [Advanced Custom Fields](https://www.advancedcustomfields.com/) installed and then import the json file, `acf-export-202x-xx-xx.json`, in the root folder of this repository to **Custom Fields -> Tools -> Import Field Groups** found in the wordpress menu.
+- For the application to run properly you will need the plugin [Advanced Custom Fields](https://www.advancedcustomfields.com/) installed and then import the json file, `acf-export-202x-xx-xx.json`, in the root folder of this repository to **Custom Fields -> Tools -> Import Field Groups** found in the wordpress menu.
 This lets you dynamically render the blog feed from within wordpress under pages and posts.
+
+- You will also need to add a **Home** page to wordpress so that the index site has something to show. This site can be accessed at both `/home` and just `/`
 
