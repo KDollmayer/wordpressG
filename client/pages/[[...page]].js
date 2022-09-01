@@ -1,8 +1,6 @@
 import styles from "../styles/Home.module.css";
 import BlogFeed from "../components/Organism/BlogFeed";
 import GalleryGrid from "../components/Organism/GalleryGrid";
-import Head from "../components/Layout/Head";
-import Navbar from "../components/Layout/Navbar";
 
 export default function Page({ data }) {
   const getProperties = (data) => {
@@ -16,11 +14,6 @@ export default function Page({ data }) {
   };
   return (
     <div className={styles.container}>
-      <Head>
-        <title>MKDS</title>
-        <meta name="description" content="Our wordpress page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BlogPost from "../../molecules/BlogPost";
+import BlogPost from "../../molecules/blogPost";
 import styled from "styled-components";
 
 const BlogList = styled.ul`

@@ -1,8 +1,6 @@
-import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import Navbar from "../../components/Layout/Navbar";
-import GalleryGrid from "../../components/Organism/GalleryGrid";
-import BlogPage from "../../components/BlogPage";
+import GalleryGrid from "../../components/organisms/GalleryGrid";
+import BlogFeed from "../../components/organisms/blogFeed";
 
 export default function Post({ data }) {
   const getProperties = (data) => {
@@ -16,11 +14,6 @@ export default function Post({ data }) {
   };
   return (
     <div className={styles.container}>
-      <Head>
-        <title>MKDS</title>
-        <meta name="description" content="Our wordpress page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>{data && <BlogPage data={data} />}</main>
     </div>
   );
