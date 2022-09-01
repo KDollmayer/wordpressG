@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import Navbar from "../../components/Navbar";
-import GalleryGrid from "../../components/GalleryGrid";
+import Navbar from "../../components/Layout/Navbar";
+import GalleryGrid from "../../components/Organism/GalleryGrid";
 import BlogPage from "../../components/BlogPage";
 
 export default function Post({ data }) {
@@ -23,18 +23,10 @@ export default function Post({ data }) {
       </Head>
       <Navbar />
       <main>
-        <BlogPage data={data} />
-        {data?.acf?.contain_blog_feed && (
-          <BlogFeed
-            limit={
-              typeof data?.acf?.total_blog_feed_posts === "number"
-                ? data?.acf?.total_blog_feed_posts
-                : 100
-            }
-          />
-        )}
-        {data?.acf?.contain_gallery_grid && (
-          <GalleryGrid data={getProperties(data?.acf)} />
+        {data && (
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}
+          ></div>
         )}
       </main>
     </div>

@@ -1,8 +1,6 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Navbar from "../components/Navbar";
-import BlogFeed from "../components/BlogFeed";
-import GalleryGrid from "../components/GalleryGrid";
+import BlogFeed from "../components/Organism/BlogFeed";
+import GalleryGrid from "../components/Organism/GalleryGrid";
 
 export default function Page({ data }) {
   const getProperties = (data) => {
@@ -25,6 +23,7 @@ export default function Page({ data }) {
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
+
         {data?.acf?.contain_blog_feed && (
           <BlogFeed
             limit={
