@@ -15,6 +15,12 @@ a {
   box-sizing: border-box;
 }
 
+.wp-container-4 > *, .wp-container-3 > *{
+margin: 5px;
+}
+
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

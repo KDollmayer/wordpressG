@@ -14,6 +14,12 @@ export default function Page({ data }) {
   };
   return (
     <div className={styles.container}>
+      <Head>
+        <title>MKDS</title>
+        <meta name="description" content="Our wordpress page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Navbar />
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>

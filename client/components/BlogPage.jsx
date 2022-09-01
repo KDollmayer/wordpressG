@@ -2,7 +2,8 @@ import React, {useEffect, useState}from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-width: 50%;
+width: 60%;
+max-width: 1000px;
 margin: auto;
 `
 
