@@ -1,6 +1,8 @@
 import styles from "../styles/Home.module.css";
 import BlogFeed from "../components/Organism/BlogFeed";
 import GalleryGrid from "../components/Organism/GalleryGrid";
+import Head from "../components/Layout/Head";
+import Navbar from "../components/Layout/Navbar";
 
 export default function Page({ data }) {
   const getProperties = (data) => {
@@ -19,7 +21,6 @@ export default function Page({ data }) {
         <meta name="description" content="Our wordpress page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       <main>
         <h1>{data?.title?.rendered}</h1>
         <p dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}></p>
@@ -42,7 +43,8 @@ export default function Page({ data }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost/wp-json/wp/v2/pages");
+  const res = await fetch(`${process.env.API_URL}/pages`);
+  console.log("DATA", res);
   const data = await res.json();
   const pathList = data.map((path) => {
     return path.id.toString();
@@ -56,7 +58,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Ber om ursäkt this looks like shit... but it works
   const slug = params.page?.[0];
-  const pageRes = await fetch("http://localhost/wp-json/wp/v2/pages");
+  const pageRes = await fetch(`${process.env.API_URL}/pages`);
   const pageData = await pageRes.json();
 
   const page = pageData.find(
@@ -65,7 +67,7 @@ export async function getStaticProps({ params }) {
       ("undefined" === typeof slug && page.slug === "home")
   );
 
-  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${page?.id}`);
+  const res = await fetch(`${process.env.API_URL}/pages/${page?.id}`);
   const data = await res.json();
 
   return {

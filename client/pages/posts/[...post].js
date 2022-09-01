@@ -21,20 +21,13 @@ export default function Post({ data }) {
         <meta name="description" content="Our wordpress page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
-      <main>
-        {data && (
-          <div
-            dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}
-          ></div>
-        )}
-      </main>
+      <main>{data && <BlogPage data={data} />}</main>
     </div>
   );
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost/wp-json/wp/v2/posts");
+  const res = await fetch(`${process.env.API_URL}/posts`);
   const data = await res.json();
   const pathList = data.map((path) => {
     return path.id.toString();
@@ -49,10 +42,10 @@ export async function getStaticProps({ params }) {
   // Ber om ursäkt this looks like shit... but it works
   const slug = params.post[0];
 
-  const pageRes = await fetch("http://localhost/wp-json/wp/v2/posts");
+  const pageRes = await fetch(`${process.env.API_URL}/posts`);
   const pageData = await pageRes.json();
   const page = pageData.find((page) => page.slug === slug);
-  const res = await fetch(`http://localhost/wp-json/wp/v2/posts/${page?.id}`);
+  const res = await fetch(`${process.env.API_URL}/posts/${page?.id}`);
   const data = await res.json();
   return {
     props: {

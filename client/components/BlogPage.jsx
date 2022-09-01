@@ -17,7 +17,7 @@ const BlogPage = ( {data}) => {
     const [heroImage, setHeroImage] = useState(null)
 
     const renderMedia = async (media) => {
-        const res = await fetch(`http://localhost/wp-json/wp/v2/media/${media}`)
+        const res = await fetch(`${process.env.API_URL}/media/${media}`)
         const data = await res.json()
         setHeroImage(data?.source_url)
        }

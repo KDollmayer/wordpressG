@@ -22,7 +22,7 @@ const Thumbnail = styled.div`
       ? css`
           url(${props.bg})
         `
-      : "url(http://localhost/wp-content/uploads/2022/08/manja-vitolic-gKXKBY-C-Dk-unsplash-1.jpg)"};
+      : "url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80)"};
   background-size: cover;
   background-position: center;
 `;
@@ -58,7 +58,7 @@ const BlogPost = ({ data }) => {
   const [thumbnail, setThumbnail] = useState(null);
 
   const renderMedia = async (media) => {
-    const res = await fetch(`http://localhost/wp-json/wp/v2/media/${media}`);
+    const res = await fetch(`${process.env.API_URL}/media/${media}`);
     const data = await res.json();
     setThumbnail(data?.source_url);
   };

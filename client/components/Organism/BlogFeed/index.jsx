@@ -15,7 +15,7 @@ const BlogFeed = ({ limit = 100 }) => {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost/wp-json/wp/v2/posts?per_page=${limit}`)
+    fetch(`${process.env.API_URL}/posts?per_page=${limit}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);

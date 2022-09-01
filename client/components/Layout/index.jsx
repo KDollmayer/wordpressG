@@ -6,7 +6,7 @@ import CustomHead from "./Head";
 import Navbar from "./Navbar";
 
 const Container = styled.div`
-  background-color: black;
+  background-color: white;
 `;
 
 const MainContainer = styled.div`
