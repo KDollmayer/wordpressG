@@ -58,7 +58,7 @@ const BlogPost = ({ data }) => {
   const [thumbnail, setThumbnail] = useState(null);
 
   const renderMedia = async (media) => {
-    const res = await fetch(`${process.env.API_URL}/media/${media}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media/${media}`);
     const data = await res.json();
     setThumbnail(data?.source_url);
   };

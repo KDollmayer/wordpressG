@@ -20,7 +20,7 @@ const GalleryGrid = ({ data }) => {
   const [imageList, setImageList] = useState(null);
 
   const getImage = async (image) => {
-    const res = await fetch(`${process.env.API_URL}/media/${image}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media/${image}`);
     const imageData = await res.json();
     return imageData;
   };

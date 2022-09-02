@@ -15,7 +15,7 @@ const BlogFeed = ({ limit = 100 }) => {
   const [posts, setPosts] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.API_URL}/posts?per_page=${limit}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?per_page=${limit}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);

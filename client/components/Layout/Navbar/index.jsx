@@ -33,7 +33,7 @@ const Navbar = () => {
   const [pathList, setPathList] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.API_URL}/pages`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`)
       .then((res) => res.json())
       .then((data) => setPathList(data));
   }, []);
