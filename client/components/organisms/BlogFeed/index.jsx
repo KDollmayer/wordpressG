@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BlogPost from "../../molecules/blogPost";
-import styled from "styled-components";
-
-const BlogList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-`;
+import * as s from './styles'
 
 const BlogFeed = ({ limit = 100 }) => {
   const [posts, setPosts] = useState(null);
@@ -22,12 +13,12 @@ const BlogFeed = ({ limit = 100 }) => {
   return (
     <div>
       <h2>Blog</h2>
-      <BlogList>
+      <s.BlogList>
         {posts &&
           posts.map((post) => {
             return <BlogPost key={post.id} data={post} />;
           })}
-      </BlogList>
+      </s.BlogList>
     </div>
   );
 };

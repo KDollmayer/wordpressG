@@ -1,17 +1,6 @@
 import React, {useEffect, useState}from 'react'
 import styled from 'styled-components'
-
-const Container = styled.div`
-width: 60%;
-max-width: 1000px;
-margin: auto;
-`
-
-const HeroImage = styled.img`
-width: 100%;
-max-width: 500px;
-height: auto;
-`
+import * as s from './styles'
 
 const BlogPage = ( {data}) => {
     const [heroImage, setHeroImage] = useState(null)
@@ -27,15 +16,15 @@ const BlogPage = ( {data}) => {
       },[])
 
   return (
-    <Container>
-        <HeroImage src={heroImage}/>
+    <s.Container>
+        <s.HeroImage src={heroImage}/>
         <h2>{data?.title?.rendered}</h2>
         {data && (
           <p
             dangerouslySetInnerHTML={{ __html: data?.content?.rendered }}
           ></p>
         )}
-    </Container>
+    </s.Container>
   )
 }
 

@@ -6,12 +6,16 @@ import CustomHead from "./Head";
 import Navbar from "./Navbar";
 
 const Container = styled.div`
-  background-color: white;
+  background-color: aliceblue;
 `;
 
 const MainContainer = styled.div`
   background-color: white;
   color: black;
+  
+  width: 70%;
+  max-width: 1200px;
+  margin: auto;
 `;
 
 export default function Layout({ children }) {
@@ -20,7 +24,6 @@ export default function Layout({ children }) {
       <CustomHead />
       <Container>
         <Navbar />
-        <Header />
         <MainContainer>
           <main>{children}</main>
         </MainContainer>

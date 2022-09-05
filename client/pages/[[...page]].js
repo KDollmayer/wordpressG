@@ -1,17 +1,7 @@
 import styles from "../styles/Home.module.css";
 import BlogFeed from "../components/organisms/BlogFeed";
-import GalleryGrid from "../components/organisms/GalleryGrid";
 
 export default function Page({ data }) {
-  const getProperties = (data) => {
-    let propertyList = [];
-    for (var property in data) {
-      if (/^gallery_image\d+$/.test(property)) {
-        propertyList.push(data[property]);
-      }
-    }
-    return propertyList;
-  };
   return (
     <div className={styles.container}>
       <main>
@@ -26,9 +16,6 @@ export default function Page({ data }) {
                 : 100
             }
           />
-        )}
-        {data?.acf?.contain_gallery_grid && (
-          <GalleryGrid data={getProperties(data?.acf)} />
         )}
       </main>
     </div>
