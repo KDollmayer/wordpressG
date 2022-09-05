@@ -33,15 +33,56 @@ const Navbar = () => {
   const [pathList, setPathList] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.API_URL}/pages`)
+    fetch(`http://localhost:8888/wp-json/wp/v2/pages`)
       .then((res) => res.json())
       .then((data) => setPathList(data));
   }, []);
+// instead of http://localhost:8888/wp-json/wp/v2/pages
+  
+  // useEffect(() => {
+  //   fetch(`http://localhost:8888/graphql`, {
+  // method: 'POST',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
+  // body: JSON.stringify({
+  //   query: `
+  //       {
+  //           pages {
+  //               nodes {
+  //                   id
+  //                   title
+  //               }
+  //           }
+  //       }
+  //   `,
+  // }),
+  // })
+  //   .then(res => res.json())
+  //   .then((data) => setPathList(data))
+  // }, []);
+
 
   return (
     <Container>
       <NavList>
-        {pathList && (
+        {
+        /* {pathList && (
+          <>
+            {console.log(pathList)}
+            {pathList.data.pages.nodes.map((path) => {
+              return (
+                <li key={path.id}>
+                  <Link href={`/${path.title.toLowerCase()}`}>
+                    <a>{path.title}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </>
+        )}  */
+        }
+                {pathList && (
           <>
             {pathList.map((path) => {
               return (
