@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import BlogFeed from "../components/organisms/BlogFeed";
+import BlogFeed from "../components/organisms/blogFeed";
 import GalleryGrid from "../components/organisms/GalleryGrid";
 
 export default function Page({ data }) {
@@ -60,9 +60,8 @@ export async function getStaticProps({ params }) {
       ("undefined" === typeof slug && page.slug === "home")
   );
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/pages/${page?.id}`
-  );
+  // const res = await fetch(`${process.env.API_URL}/pages/${page?.id}`);
+  const res = await fetch(`${process.env.API_URL}/pages/${page?.id}`);
   const data = await res.json();
 
   return {
