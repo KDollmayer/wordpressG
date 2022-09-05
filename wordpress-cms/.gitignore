@@ -1,3 +1,4 @@
+/*
 # ignore everything in the root except the "wp-content" directory.
 !wp-content/
 
@@ -24,3 +25,7 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+.env
+
+
