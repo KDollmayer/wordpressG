@@ -6,9 +6,5 @@ const Container = styled.div`
 `;
 
 export default function Footer({ children, ...rest }) {
-  return (
-    <Container>
-      <div></div>
-    </Container>
-  );
+  return <Container></Container>;
 }
