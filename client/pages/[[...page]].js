@@ -36,7 +36,7 @@ export default function Page({ data }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`);
+  const res = await fetch(`http://localhost/wp-json/wp/v2/pages`);
   console.log("DATA", res);
   const data = await res.json();
   const pathList = data.map((path) => {
@@ -51,7 +51,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // Ber om ursäkt this looks like shit... but it works
   const slug = params.page?.[0];
-  const pageRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`);
+  const pageRes = await fetch(`http://localhost/wp-json/wp/v2/pages`);
   const pageData = await pageRes.json();
 
   const page = pageData.find(
@@ -61,7 +61,7 @@ export async function getStaticProps({ params }) {
   );
 
   // const res = await fetch(`${process.env.API_URL}/pages/${page?.id}`);
-  const res = await fetch(`${process.env.API_URL}/pages/${page?.id}`);
+  const res = await fetch(`http://localhost/wp-json/wp/v2/pages/${page?.id}`);
   const data = await res.json();
 
   return {
