@@ -37,6 +37,31 @@ const Navbar = () => {
       .then((res) => res.json())
       .then((data) => setPathList(data));
   }, []);
+  
+  // instead of ${process.env.NEXT_PUBLIC_API_URL}/pages
+  
+  // useEffect(() => {
+  //   fetch(`http://localhost/graphql`, {
+  // method: 'POST',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
+  // body: JSON.stringify({
+  //   query: `
+  //       {
+  //           pages {
+  //               nodes {
+  //                   id
+  //                   title
+  //               }
+  //           }
+  //       }
+  //   `,
+  // }),
+  // })
+  //   .then(res => res.json())
+  //   .then((data) => setPathList(data))
+  // }, []);
 
   return (
     <Container>
@@ -54,6 +79,22 @@ const Navbar = () => {
             })}
           </>
         )}
+                {
+        /* {pathList && (
+          <>
+            {console.log(pathList)}
+            {pathList.data.pages.nodes.map((path) => {
+              return (
+                <li key={path.id}>
+                  <Link href={`/${path.title.toLowerCase()}`}>
+                    <a>{path.title}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </>
+        )}  */
+        }
       </NavList>
     </Container>
   );
