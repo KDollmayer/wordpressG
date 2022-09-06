@@ -33,7 +33,7 @@ const Navbar = () => {
   const [pathList, setPathList] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8888/wp-json/wp/v2/pages`)
+    fetch(`http://localhost/wp-json/wp/v2/pages`)
       .then((res) => res.json())
       .then((data) => setPathList(data));
   }, []);
@@ -82,7 +82,7 @@ const Navbar = () => {
           </>
         )}  */
         }
-                {pathList && (
+                {/* {pathList && (
           <>
             {pathList.map((path) => {
               return (
@@ -94,7 +94,7 @@ const Navbar = () => {
               );
             })}
           </>
-        )}
+        )} */}
       </NavList>
     </Container>
   );
