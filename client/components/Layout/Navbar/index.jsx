@@ -33,14 +33,14 @@ const Navbar = () => {
   const [pathList, setPathList] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost/wp-json/wp/v2/pages`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`)
       .then((res) => res.json())
       .then((data) => setPathList(data));
   }, []);
-// instead of http://localhost:8888/wp-json/wp/v2/pages
+// instead of ${process.env.NEXT_PUBLIC_API_URL}/pages
   
   // useEffect(() => {
-  //   fetch(`http://localhost:8888/graphql`, {
+  //   fetch(`http://localhost/graphql`, {
   // method: 'POST',
   // headers: {
   //   'Content-Type': 'application/json',
